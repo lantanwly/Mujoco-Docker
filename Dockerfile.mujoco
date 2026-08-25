@@ -1,0 +1,9 @@
+FROM rl-test
+# 无头 MuJoCo 需要的系统库 (apt 源已在上层指向清华)
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        libgl1 libglib2.0-0 libosmesa6 libglfw3 libglew2.1 xvfb \
+    && rm -rf /var/lib/apt/lists/*
+# MuJoCo 2.3.7 (py3.8 兼容) + 渲染相关 pip 包
+RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    "mujoco==2.3.7" imageio imageio-ffmpeg
