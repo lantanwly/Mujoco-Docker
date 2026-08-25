@@ -6,4 +6,4 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 # MuJoCo 2.3.7 (py3.8 兼容) + 渲染相关 pip 包
 RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    "mujoco==2.3.7" imageio imageio-ffmpeg
+    "mujoco==2.3.7" "moviepy==1.0.3" imageio imageio-ffmpeg
